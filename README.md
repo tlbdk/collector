@@ -2,6 +2,16 @@
 
 Repo to gather information and tools on how to build a minimal Linux firmware
 
+## Current Plan
+
+* Custom kernel no modules
+* Initramfs with custom init in go
+  * Cross-compile tiny libc
+  * Cross-compile pppd
+  * Cross-compile go init
+  * Cross-compile bsdiff
+  * cpio and gzip
+
 ## Setup Raspberry Pi emulator on MacOS
 
 ``` bash
@@ -37,10 +47,30 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 
 ## Links
 
+### Build custom kernel
+
 * Build qemu rpi kernel:  https://github.com/dhruvvyas90/qemu-rpi-kernel/tree/master/tools
-* Build kernel in docker: https://github.com/moul/docker-kernel-builder
-* Run on MacOS: https://gist.github.com/hfreire/5846b7aa4ac9209699ba
 * https://www.raspberrypi.org/documentation/linux/kernel/configuring.md
-* https://3mdeb.com/os-dev/emulate-rapberry-pi-2-in-qemu/#.Wjhdc1Q-cl4
 * https://github.com/kolargol/raspberry-minimal-kernel
 * http://wiki.osdev.org/Raspberry_Pi_Bare_Bones
+
+### Building custom root fs
+
+* https://buildroot.org/
+* https://github.com/gamaral/rpi-buildroot/blob/rpi/README.md
+* https://ltekieli-com.cdn.ampproject.org/c/ltekieli.com/buildroot-with-raspberry-pi-what-where-and-how/amp/
+
+### Testing on mac
+
+* Run on MacOS: https://gist.github.com/hfreire/5846b7aa4ac9209699ba
+* https://3mdeb.com/os-dev/emulate-rapberry-pi-2-in-qemu/#.Wjhdc1Q-cl4
+
+### Building in docker
+
+* Build kernel in docker: https://github.com/moul/docker-kernel-builder
+
+### Boot speed up
+
+* Custom go init: https://www.mustafaak.in/posts/2016-02-12-packaging-myinit-and-configs/
+* Custom go init: http://u-root.tk/#setup
+* http://www.zdnet.com/article/hands-on-with-picore-7-0-tiny-core-linux-for-the-raspberry-pi/
