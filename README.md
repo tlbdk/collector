@@ -76,6 +76,10 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 * Custom go init: http://u-root.tk/#setup
 * http://www.zdnet.com/article/hands-on-with-picore-7-0-tiny-core-linux-for-the-raspberry-pi/
 
+### Boot fallback
+
+* https://github.com/raspberrypi/firmware/issues/593
+
 ### Watchdog timer
 
 * http://www.switchdoc.com/2014/11/reliable-projects-using-internal-watchdog-timer-raspberry-pi/
