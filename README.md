@@ -79,6 +79,7 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 ### Boot fallback
 
 * https://github.com/raspberrypi/firmware/issues/593
+* https://dius.com.au/2015/08/19/raspberry-pi-uboot/
 
 ### Watchdog timer
 
