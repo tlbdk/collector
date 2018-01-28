@@ -82,6 +82,7 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 * https://dius.com.au/2015/08/19/raspberry-pi-uboot/
 * http://ltekieli.com/buildroot-with-raspberry-pi-u-boot/
 * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md
+* https://raspberrypi.stackexchange.com/questions/3796/custom-recovery-partition
 
 ### Watchdog timer
 
