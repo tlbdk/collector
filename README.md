@@ -80,6 +80,8 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 
 * https://github.com/raspberrypi/firmware/issues/593
 * https://dius.com.au/2015/08/19/raspberry-pi-uboot/
+* http://ltekieli.com/buildroot-with-raspberry-pi-u-boot/
+* https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md
 
 ### Watchdog timer
 
