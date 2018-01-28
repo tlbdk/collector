@@ -53,6 +53,7 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 * https://www.raspberrypi.org/documentation/linux/kernel/configuring.md
 * https://github.com/kolargol/raspberry-minimal-kernel
 * http://wiki.osdev.org/Raspberry_Pi_Bare_Bones
+* https://blog.christophersmart.com/2016/10/27/building-and-booting-upstream-linux-and-u-boot-for-raspberry-pi-23-arm-boards/
 
 ### Building custom root fs
 
