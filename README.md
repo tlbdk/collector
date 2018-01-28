@@ -74,3 +74,7 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 * Custom go init: https://www.mustafaak.in/posts/2016-02-12-packaging-myinit-and-configs/
 * Custom go init: http://u-root.tk/#setup
 * http://www.zdnet.com/article/hands-on-with-picore-7-0-tiny-core-linux-for-the-raspberry-pi/
+
+### Watchdog timer
+
+* http://www.switchdoc.com/2014/11/reliable-projects-using-internal-watchdog-timer-raspberry-pi/
