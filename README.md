@@ -73,11 +73,10 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 
 ### Boot speed up
 
+* https://www.toradex.com/blog/embedded-linux-boot-time-optimization
 * Custom go init: https://www.mustafaak.in/posts/2016-02-12-packaging-myinit-and-configs/
 * Custom go init: http://u-root.tk/#setup
 * http://www.zdnet.com/article/hands-on-with-picore-7-0-tiny-core-linux-for-the-raspberry-pi/
-* echo 5 > /sys/module/bcm2708/parameters/reboot_part // Set reboot partition
- * https://github.com/raspberrypi/linux/issues/2095
 
 ### Boot fallback
 
@@ -87,6 +86,8 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 * https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md
 * https://raspberrypi.stackexchange.com/questions/3796/custom-recovery-partition
 * https://github.com/mkj/rpi-flipflop
+* echo 5 > /sys/module/bcm2708/parameters/reboot_part // Set reboot partition
+  * https://github.com/raspberrypi/linux/issues/2095
 
 ### Watchdog timer
 
