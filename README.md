@@ -58,6 +58,7 @@ qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
 ### Building custom root fs
 
 * https://buildroot.org/
+* http://www.kaizou.org/2016/09/boot-minimal-linux-qemu/
 * https://github.com/gamaral/rpi-buildroot/blob/rpi/README.md
 * https://ltekieli-com.cdn.ampproject.org/c/ltekieli.com/buildroot-with-raspberry-pi-what-where-and-how/amp/
 
