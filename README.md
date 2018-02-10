@@ -63,6 +63,12 @@ or download pre-compiled version:
 wget https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/master/kernel-qemu-4.4.34-jessie
 ```
 
+### Trimming the config
+
+``` bash
+diff -u -I '#.*' orig.config new.config
+````
+
 ## Run Raspbian
 
 Download image and kernel for qemu:
@@ -92,6 +98,7 @@ qemu-system-arm -kernel zImage  \
 * https://github.com/kolargol/raspberry-minimal-kernel
 * http://wiki.osdev.org/Raspberry_Pi_Bare_Bones
 * https://blog.christophersmart.com/2016/10/27/building-and-booting-upstream-linux-and-u-boot-for-raspberry-pi-23-arm-boards/
+* Network support: https://ownyourbits.com/2017/02/06/raspbian-on-qemu-with-network-access/
 
 ### Building custom root fs
 
