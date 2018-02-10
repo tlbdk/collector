@@ -51,15 +51,21 @@ RUN patch -p1 < linux-arm.patch
 # Build initial config
 RUN make ARCH=arm versatile_defconfig
 
-# Set toolchain
-RUN echo CONFIG_CROSS_COMPILE="${TOOLCHAIN}" >> .config
-
 # Add qemu configs
-COPY qemu.config qemu.config
-RUN cat qemu.config >> .config
+COPY qemu.config new.config
+
+# Set tool chain in new config
+RUN echo >> new.config
+RUN echo CONFIG_CROSS_COMPILE="${TOOLCHAIN}" >> new.config
+
+# Merge config
+RUN cat new.config >> .config
+
+# Not working seems we are lossing some configs
+# RUN ./scripts/kconfig/merge_config.sh .config new.config
 
 # Build kernel
-RUN make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- oldconfig
-RUN make -j 4 -k ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bzImage
+RUN make ARCH=arm CROSS_COMPILE=${TOOLCHAIN}- olddefconfig
+RUN make -j 4 -k ARCH=arm CROSS_COMPILE=${TOOLCHAIN}- bzImage
 
 RUN cp arch/arm/boot/zImage /tmp
