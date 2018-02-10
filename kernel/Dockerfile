@@ -25,6 +25,8 @@ RUN cd /usr/src && \
 
 WORKDIR /usr/src/linux
 
+RUN mkdir /out
+
 # Catch the git fetch when play with versions
 RUN git fetch --tags
 
@@ -57,4 +59,22 @@ RUN ./scripts/kconfig/merge_config.sh -m .config new.config
 RUN make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- olddefconfig
 RUN make -j 4 -k ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bzImage
 
-RUN cp arch/arm/boot/zImage /tmp
+RUN cp arch/arm/boot/zImage /out
+
+WORKDIR /usr/src
+
+RUN apt-get update && apt-get -y cpio python unzip rsync
+
+# Install Buildroot.
+RUN wget -nv https://buildroot.org/downloads/buildroot-2017.11.2.tar.bz2 &&\
+    tar xf buildroot-*.tar* &&\
+    rm buildroot-*.tar* &&\
+    ln -s buildroot-* buildroot &&\
+    mkdir -v buildroot/patches
+
+# Install BusyBox.
+RUN wget -nv https://busybox.net/downloads/busybox-1.26.2.tar.bz2 &&\
+    tar xf *.tar* &&\
+    rm *.tar*
+
+ENTRYPOINT ["/bin/bash"]
