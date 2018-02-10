@@ -90,10 +90,12 @@ qemu-system-arm -kernel zImage  \
 * https://www.raspberrypi.org/documentation/linux/kernel/configuring.md
 * https://github.com/kolargol/raspberry-minimal-kernel
 * http://wiki.osdev.org/Raspberry_Pi_Bare_Bones
+* https://blog.christophersmart.com/2016/10/27/building-and-booting-upstream-linux-and-u-boot-for-raspberry-pi-23-arm-boards/
 
 ### Building custom root fs
 
 * https://buildroot.org/
+* http://www.kaizou.org/2016/09/boot-minimal-linux-qemu/
 * https://github.com/gamaral/rpi-buildroot/blob/rpi/README.md
 * https://ltekieli-com.cdn.ampproject.org/c/ltekieli.com/buildroot-with-raspberry-pi-what-where-and-how/amp/
 
@@ -108,6 +110,22 @@ qemu-system-arm -kernel zImage  \
 
 ### Boot speed up
 
+* https://www.toradex.com/blog/embedded-linux-boot-time-optimization
 * Custom go init: https://www.mustafaak.in/posts/2016-02-12-packaging-myinit-and-configs/
 * Custom go init: http://u-root.tk/#setup
 * http://www.zdnet.com/article/hands-on-with-picore-7-0-tiny-core-linux-for-the-raspberry-pi/
+
+### Boot fallback
+
+* https://github.com/raspberrypi/firmware/issues/593
+* https://dius.com.au/2015/08/19/raspberry-pi-uboot/
+* http://ltekieli.com/buildroot-with-raspberry-pi-u-boot/
+* https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/bootflow.md
+* https://raspberrypi.stackexchange.com/questions/3796/custom-recovery-partition
+* https://github.com/mkj/rpi-flipflop
+* echo 5 > /sys/module/bcm2708/parameters/reboot_part // Set reboot partition
+  * https://github.com/raspberrypi/linux/issues/2095
+
+### Watchdog timer
+
+* http://www.switchdoc.com/2014/11/reliable-projects-using-internal-watchdog-timer-raspberry-pi/
