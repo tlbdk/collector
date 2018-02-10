@@ -18,7 +18,7 @@ index fd9077a74fce..f6f3ddf4c1cb 100644
  	select CPU_PABRT_LEGACY
  	select CPU_THUMB_CAPABLE
  	select CPU_TLB_V4WBI if MMU
-+       depends on !CPU_V6 && !CPU_V7
++   depends on !CPU_V6 && !CPU_V7
  	help
  	  This is a variant of the ARM920.  It has slightly different
  	  instruction sequences for cache and TLB operations.  Curiously,

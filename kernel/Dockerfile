@@ -37,7 +37,7 @@ ARG COMMIT=rpi-4.4.y
 ARG PATCH=linux-arm-4.4.x.patch
 
 # Linux 4.14.x - work in progress
-#ARG COMMIT=rpi-4.14.y
+#ARG COMMIT=rpi-4.15.y
 #ARG PATCH=linux-arm-4.14.x.patch
 
 RUN git checkout ${COMMIT}
