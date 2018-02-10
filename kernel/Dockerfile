@@ -25,11 +25,15 @@ RUN cd /usr/src && \
 
 WORKDIR /usr/src/linux
 
+# Catch the git fetch when play with versions
+RUN git fetch --tags
+
 # rpi-4.9.y
-ARG COMMIT=38f2800e6e94019a00a2880bfed8fba37aea2e5d
+# 38f2800e6e94019a00a2880bfed8fba37aea2e5d 4.4.34
+ARG COMMIT=rpi-4.4.y
 ARG TOOLCHAIN=arm-linux-gnueabihf
 
-RUN git fetch --tags && git checkout ${COMMIT}
+RUN git checkout ${COMMIT}
 
 # Patch ARM support
 COPY linux-arm.patch linux-arm.patch

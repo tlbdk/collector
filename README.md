@@ -54,6 +54,7 @@ make install
 
 ``` bash
 docker build -t kernelbuild:latest kernel/
+docker run kernelbuild:latest cat /tmp/zImage > zImage
 ```
 
 or download pre-compiled version:
