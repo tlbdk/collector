@@ -14,14 +14,52 @@ Repo to gather information and tools on how to build a minimal Linux firmware
 
 ## Setup Raspberry Pi emulator on MacOS
 
+### Installing from brew
+
 ``` bash
 brew install qemu
+```
+
+### Compiling from git
+
+Install libraries for compiling qemu: 
+
+``` bash
+brew install glib gmp mpfr pkgconfig ppl libmpc
+```
+
+Configure for x86 and arm 32bit and 64bit support:
+
+``` bash
+./configure \
+  --enable-cocoa \
+  --target-list=i386-softmmu,x86_64-softmmu,arm-softmmu,aarch64-softmmu \
+  --disable-vnc \
+  --disable-libssh2 \
+  --enable-modules \
+  --enable-tcg-interpreter \
+  --enable-debug-tcg \
+  --disable-strip \
+  --python=/usr/local/bin/python2
+```
+
+Build and install:
+
+``` bash
+make -j4
+make install
 ```
 
 ## Build kernel
 
 ``` bash
-docker build -t kernelbuild:latest ./
+docker build -t kernelbuild:latest kernel/
+```
+
+or download pre-compiled version:
+
+``` bash
+wget https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/master/kernel-qemu-4.4.34-jessie
 ```
 
 ## Run Raspbian
@@ -30,14 +68,13 @@ Download image and kernel for qemu:
 
 ``` bash
 wget https://downloads.raspberrypi.org/raspbian_lite_latest
-unzip raspbian_lite_latest
-wget https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/master/kernel-qemu-4.4.34-jessie 
+unzip raspbian_lite_latest 
 ```
 
 Run image:
 
 ``` bash
-qemu-system-arm -kernel kernel-qemu-4.4.34-jessie  \
+qemu-system-arm -kernel zImage  \
 -cpu arm1176 -m 256 \
 -M versatilepb -no-reboot -serial stdio \
 -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" \

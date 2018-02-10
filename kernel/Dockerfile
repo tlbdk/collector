@@ -25,10 +25,27 @@ RUN cd /usr/src && \
 
 WORKDIR /usr/src/linux
 
-RUN git fetch --tags && git checkout rpi-4.9.y
+# rpi-4.9.y
+ARG COMMIT=38f2800e6e94019a00a2880bfed8fba37aea2e5d
+ARG TOOLCHAIN=arm-linux-gnueabihf
 
-COPY arm.config .config
+RUN git fetch --tags && git checkout ${COMMIT}
 
+# Patch ARM support
+COPY linux-arm.patch linux-arm.patch
+RUN patch -p1 < linux-arm.patch
+
+# Build initial config
+RUN make ARCH=arm versatile_defconfig
+
+# Set toolchain
+RUN echo CONFIG_CROSS_COMPILE="${TOOLCHAIN}" >> .config
+
+# Add qemu configs
+COPY qemu.config qemu.config
+RUN cat qemu.config >> .config
+
+# Build kernel
 RUN make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- oldconfig
 RUN make -j 4 -k ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bzImage
 
