@@ -63,7 +63,7 @@ RUN cp arch/arm/boot/zImage /out
 
 WORKDIR /usr/src
 
-RUN apt-get update && apt-get -y cpio python unzip rsync
+RUN apt-get update && apt-get -y install cpio python unzip rsync
 
 # Install Buildroot.
 RUN wget -nv https://buildroot.org/downloads/buildroot-2017.11.2.tar.bz2 &&\
@@ -77,4 +77,4 @@ RUN wget -nv https://busybox.net/downloads/busybox-1.26.2.tar.bz2 &&\
     tar xf *.tar* &&\
     rm *.tar*
 
-ENTRYPOINT ["/bin/bash"]
+CMD ["/bin/bash"]
