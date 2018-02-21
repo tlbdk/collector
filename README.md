@@ -54,7 +54,7 @@ make install
 
 ``` bash
 docker build -t kernelbuild:latest kernel/
-docker run kernelbuild:latest cat /tmp/zImage > zImage
+docker run kernelbuild:latest cat /usr/src/linux/arch/arm64/boot/Image.gz > zImage
 ```
 
 or download pre-compiled version:
@@ -81,12 +81,15 @@ unzip raspbian_lite_latest
 Run image:
 
 ``` bash
-qemu-system-arm -kernel zImage  \
--cpu arm1176 -m 256 \
--M versatilepb -no-reboot -serial stdio \
--append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" \
--drive format=raw,file=2017-11-29-raspbian-stretch-lite.img \
--net user,hostfwd=tcp::5022-:22
+qemu-system-aarch64 \
+  -machine virt \
+  -cpu cortex-a57 \
+  -m 512 \
+  -nographic -smp 1 \
+  -drive format=raw,file=2017-11-29-raspbian-stretch-lite.img \
+  -kernel zImage \
+  -append "rw rootfstype=ext4 console=ttyAMA0 root=/dev/vda2 oops=panic panic_on_warn=1 panic=-1 ftrace_dump_on_oops=orig_cpu debug earlyprintk=serial slub_debug=UZ" \
+  -net user,hostfwd=tcp::10023-:22 -net nic
 ```
 
 ## Links

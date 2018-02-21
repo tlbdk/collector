@@ -49,17 +49,15 @@ COPY ${PATCH} linux-arm.patch
 RUN patch -p1 < linux-arm.patch
 
 # Build initial config
-RUN make ARCH=arm versatile_defconfig
+RUN ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make defconfig
 
 # Merge qemu config to default
 COPY qemu.config new.config
 RUN ./scripts/kconfig/merge_config.sh -m .config new.config
 
 # Build kernel
-RUN make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- olddefconfig
-RUN make -j 4 -k ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bzImage
-
-RUN cp arch/arm/boot/zImage /out
+RUN make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- olddefconfig
+RUN make -j 4 -k ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
 
 WORKDIR /usr/src
 
