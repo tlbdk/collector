@@ -99,6 +99,7 @@ qemu-system-arm -kernel zImage  \
 * http://wiki.osdev.org/Raspberry_Pi_Bare_Bones
 * https://blog.christophersmart.com/2016/10/27/building-and-booting-upstream-linux-and-u-boot-for-raspberry-pi-23-arm-boards/
 * Network support: https://ownyourbits.com/2017/02/06/raspbian-on-qemu-with-network-access/
+* Newer ARM: https://www.bennee.com/~alex/blog/2014/05/09/running-linux-in-qemus-aarch64-system-emulation-mode/
 
 ### Building custom root fs
 
