@@ -66,6 +66,10 @@ wget https://github.com/dhruvvyas90/qemu-rpi-kernel/raw/master/kernel-qemu-4.4.3
 ### Trimming the config
 
 ``` bash
+docker run -it -v `pwd`/kernel:/kernel kernelbuild:latest /bin/bash
+```
+
+``` bash
 diff -u -I '#.*' orig.config new.config
 ````
 
