@@ -27,26 +27,27 @@ WORKDIR /usr/src/linux
 
 RUN mkdir /out
 
-# Catch the git fetch when play with versions
+# Cache the git fetch when we play with versions
 RUN git fetch --tags
+RUN git pull
 
 # Linux 4.4.34
 #ARG COMMIT=38f2800e6e94019a00a2880bfed8fba37aea2e5d
 #ARG PATCH=linux-arm-4.4.x.patch
 
 # Linux 4.4.x (50+)
-ARG COMMIT=rpi-4.4.y
-ARG PATCH=linux-arm-4.4.x.patch
+#ARG COMMIT=rpi-4.4.y
+#ARG PATCH=linux-arm-4.4.x.patch
 
 # Linux 4.14.x - work in progress
-#ARG COMMIT=rpi-4.15.y
+ARG COMMIT=rpi-4.14.y
 #ARG PATCH=linux-arm-4.14.x.patch
 
 RUN git checkout ${COMMIT}
 
 # Patch ARM support
-COPY ${PATCH} linux-arm.patch
-RUN patch -p1 < linux-arm.patch
+#COPY ${PATCH} linux-arm.patch
+#RUN patch -p1 < linux-arm.patch
 
 # Build initial config
 RUN ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make defconfig
